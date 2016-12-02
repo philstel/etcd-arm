@@ -7,4 +7,4 @@ COPY etcdctl .
 
 ENV ETCD_UNSUPPORTED_ARCH=arm
 
-CMD etcd
+CMD /etcd
