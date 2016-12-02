@@ -1,0 +1,10 @@
+FROM scratch
+
+MAINTAINER kylejw1@gmail.com
+
+COPY etcd .
+COPY etcdctl .
+
+ENV ETCD_UNSUPPORTED_ARCH=arm
+
+CMD etcd
