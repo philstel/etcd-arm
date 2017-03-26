@@ -1,0 +1,17 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+before_install:
+- docker build -f Dockerfile.build -t kylejw/etcd-arm-build .
+- docker run --rm -v $(pwd):/out kylejw/etcd-arm-build
+- docker build -f Dockerfile.etcd -t kylejw/etcd-arm .
+
+
+script:
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+- docker tag kylejw/etcd-arm phillu/etcd-arm
+- docker push phillu/etcd-arm
